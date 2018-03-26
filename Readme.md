@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Эли Левит](https://up.htmlacademy.ru/ecmascript/4/user/674039).
-* Наставник: `Неизвестно`.
+* Наставник: `Дмитрий Донецкий`.
 
 ---
 
