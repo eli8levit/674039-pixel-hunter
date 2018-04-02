@@ -17,12 +17,14 @@
     "eslint": "4.2.0",
     "eslint-config-htmlacademy": "0.4.x",
     "gulp": "3.9.1",
+    "gulp-better-rollup": "3.1.0",
     "gulp-csso": "3.0.0",
     "gulp-imagemin": "3.2.0",
     "gulp-plumber": "1.1.0",
     "gulp-postcss": "7.0.0",
     "gulp-rename": "1.2.2",
-    "gulp-sass": "3.1.0"
+    "gulp-sass": "3.1.0",
+    "gulp-sourcemaps": "2.6.4"
   },
   "engines": {
     "node": "6.11.3"
