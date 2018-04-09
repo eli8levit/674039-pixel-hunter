@@ -1,6 +1,6 @@
-import createElement from '../createElement.js';
-import changeView from '../changeView.js';
-import {game2, intro} from './index.js';
+import createElement from '../createElement';
+import changeView from '../changeView';
+import {game2, intro} from './index';
 
 const template = `<div><header class="header">
                     <div class="header__back">

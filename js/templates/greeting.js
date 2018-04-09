@@ -1,6 +1,6 @@
-import createElement from '../createElement.js';
-import changeView from '../changeView.js';
-import {rules} from './index.js';
+import createElement from '../createElement';
+import changeView from '../changeView';
+import {rules} from './index';
 
 const template = `<div class="greeting central--blur">
                       <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>

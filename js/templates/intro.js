@@ -1,6 +1,6 @@
-import createElement from '../createElement.js';
-import changeView from '../changeView.js';
-import {greeting} from './index.js';
+import createElement from '../createElement';
+import changeView from '../changeView';
+import {greeting} from './index';
 
 const template = `<div id="intro" class="intro">
                     <h1 class="intro__asterisk" onclick="handleIntro()">*</h1>
