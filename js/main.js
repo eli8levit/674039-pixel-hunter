@@ -1,1 +1,1 @@
-import './templates/index.js';
+import './templates/index';
