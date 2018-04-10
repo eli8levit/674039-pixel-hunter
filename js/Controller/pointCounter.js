@@ -7,9 +7,7 @@ function pointCounter(answers, lifes) {
     return -1;
   }
 
-  let points = 0;
-
-  answers.forEach((answer) => {
+  let calcPoints = answers.map((answer) => {
     let singlePoints = 0;
     if (answer.correct) {
       switch (true) {
@@ -18,11 +16,13 @@ function pointCounter(answers, lifes) {
         default: singlePoints = 100; break;
       }
     }
-    points += singlePoints;
+    return singlePoints;
   });
 
-  points += lifes * 50;
+  let totalPoints = calcPoints.reduce((a, b) => a + b);
 
-  return points;
+  totalPoints += lifes * 50;
+
+  return totalPoints;
 }
 export default pointCounter;

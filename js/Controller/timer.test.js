@@ -1,8 +1,6 @@
 import {assert, expect} from 'chai';
 import timer from './timer';
 
-const fn = () => {};
-
 describe(`Timer`, () => {
   it(`should throw errow if time is not provided`, () => {
     expect(timer).to.throw();
@@ -21,10 +19,12 @@ describe(`Timer`, () => {
   });
 
   it(`should throw error if time is too big`, () => {
+    const fn = () => {};
     expect(() => timer(400, fn));
   });
 
   it(`should return a function`, () => {
+    const fn = () => {};
     assert.typeOf(timer(5, fn), `function`);
   });
 });

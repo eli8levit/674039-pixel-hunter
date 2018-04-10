@@ -1,5 +1,5 @@
-import createElement from '../createElement';
-import changeView from '../changeView';
+import createElement from '../Controller/createElement';
+import changeView from '../Controller/changeView';
 import {rules} from './index';
 
 const template = `<div class="greeting central--blur">

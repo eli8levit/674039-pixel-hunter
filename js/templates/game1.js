@@ -1,5 +1,5 @@
-import createElement from '../createElement';
-import changeView from '../changeView';
+import createElement from '../Controller/createElement';
+import changeView from '../Controller/changeView';
 import {game2, intro} from './index';
 
 const template = `<div><header class="header">
