@@ -7,7 +7,7 @@ function pointCounter(answers, lifes) {
     return -1;
   }
 
-  let calcPoints = answers.map((answer) => {
+  const calcPoints = answers.map((answer) => {
     let singlePoints = 0;
     if (answer.correct) {
       switch (true) {
