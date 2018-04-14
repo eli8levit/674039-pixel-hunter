@@ -1,6 +1,7 @@
-const createElement = (str) => {
-  let parser = new DOMParser();
-  return parser.parseFromString(str, `text/html`).body.firstChild;
+const createElement = (template) => {
+  const container = document.createElement(`div`);
+  container.innerHTML = template;
+  return container;
 };
 
 export default createElement;
