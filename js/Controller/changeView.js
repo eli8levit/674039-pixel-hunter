@@ -23,7 +23,7 @@ function changeView(state, stages) {
 
   const back = document.getElementsByClassName(`back`);
 
-  if (state.lifes === 0) {
+  if (state.lifes === 0 && state.currentScreen !== `stats`) {
     nextRender(`stats`);
   }
 
