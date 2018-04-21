@@ -1,21 +1,18 @@
-export default function handleAnswer(e, elements, state, stages, cb) {
-  (() => {
+import stateHandler from './StateHandler';
 
+const {state} = stateHandler;
+
+export default function handleAnswer(e, elements, limit) {
+  (() => {
     const check = existCheck(e.target.name);
     if (e.target.tagName !== `SPAN` && check || e.target.id) {
 
       const element = state.currentScreen === `game5` || state.currentScreen === `game6` ? e.target : e.target.parentNode;
       const answer = elements.indexOf(element);
-      const match = stages[state.currentScreen].content.answers.includes(answer);
+      const match = state.stages[state.currentScreen].content.answers.includes(answer);
       const resArr = resultCount(match);
 
-      let limit = 2;
-      if (state.currentScreen === `game3` || state.currentScreen === `game5` || state.currentScreen === `game6`) {
-        limit = 1;
-      }
-
       if (resArr.length === limit) {
-        const nextStages = Object.assign({}, stages);
         const finalRes = {
           correct: !resArr.includes(false),
           time: 15,
@@ -26,11 +23,11 @@ export default function handleAnswer(e, elements, state, stages, cb) {
           lifes--;
           nextState.lifes = lifes;
         }
-        nextState.currentScreen = stages[state.currentScreen].next.screen;
+        nextState.currentScreen = state.stages[state.currentScreen].next;
         existCheck(`CLEAR`);
         resultCount(`CLEAR`);
-        nextStages[`results`].push(finalRes);
-        cb(nextState, nextStages);
+        nextState[`results`].push(finalRes);
+        stateHandler.state = nextState;
       }
       return;
     }
