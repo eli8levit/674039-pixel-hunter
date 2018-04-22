@@ -1,13 +1,11 @@
-
-export const footer = (stages) => `<div class="stats">
+const footer = (results) => `<div class="stats">
                               <ul class="stats">
-                                ${createFooter(stages)}
+                                ${createFooter(results)}
                               </ul>
                             </div>`;
 
-const createFooter = (stages) => {
+const createFooter = (results) => {
   let str = ``;
-  const results = stages[`results`];
 
   results.forEach((res) => {
     let status = ``;
@@ -24,3 +22,5 @@ const createFooter = (stages) => {
   }
   return str;
 };
+
+export default footer;
