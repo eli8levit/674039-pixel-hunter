@@ -1,28 +1,31 @@
 import RulesView from '../views/rules-view';
 import HeaderView from '../views/header-view';
-import updateView from '../Controller/updateView';
 import stateHandler from '../Controller/StateHandler';
 import backToIntro from '../Controller/backToIntro';
 import nextScreen from '../Controller/nextScreen';
+import updateView from '../Controller/updateView';
 
-let rules;
-let header;
+export default class RulesScreen {
+  constructor(name) {
+    this.name = name;
+  }
 
-stateHandler.addListener((nextState) => {
-  if (nextState.currentScreen === `rules`) {
+  init() {
+    this.header = new HeaderView();
+    this.view = new RulesView(this.name);
 
-    header = new HeaderView();
-    rules = new RulesView();
+    this.view.nextClick = nextScreen;
 
-    header.backClick = backToIntro;
-
-    rules.nextClick = () => {
-      rules.name = ``;
-      nextScreen();
+    this.view.onInput = ({target: {value}}) => {
+      stateHandler.nameInput = value;
+      this.view.toggleButton(true);
+      if (value === ``) {
+        this.view.toggleButton(false);
+      }
     };
 
-    updateView(header, rules);
-  }
-});
+    this.header.backClick = backToIntro;
 
-export default rules;
+    updateView(this.header, this.view);
+  }
+}

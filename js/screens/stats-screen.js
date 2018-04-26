@@ -1,19 +1,21 @@
 import StatsView from '../views/stats-view';
 import HeaderView from '../views/header-view';
 import updateView from '../Controller/updateView';
-import stateHandler from '../Controller/StateHandler';
 import backToIntro from '../Controller/backToIntro';
+import timer from '../utils/timer';
 
-let stats;
-let header = new HeaderView();
-
-header.backClick = backToIntro;
-
-stateHandler.addListener((nextState) => {
-  if (nextState.currentScreen === `stats`) {
-    stats = new StatsView(nextState);
-    updateView(header, stats);
+export default class Stats {
+  constructor(state) {
+    this.state = state;
   }
-});
 
-export default stats;
+  init() {
+    timer.stop();
+    this.header = new HeaderView();
+    this.view = new StatsView(this.state);
+
+    this.header.backClick = backToIntro;
+
+    updateView(this.header, this.view);
+  }
+}

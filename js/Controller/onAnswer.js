@@ -1,8 +1,12 @@
 import stateHandler from './StateHandler';
+import nextScreen from './nextScreen';
 
-const {state} = stateHandler;
+const convertTime = (time) => {
+  const [minutes, seconds] = time.split(`:`);
+  return parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
+};
 
-export default function handleAnswer(e, elements, limit) {
+export default function handleAnswer(e, elements, limit, state, startTime) {
   (() => {
     const check = existCheck(e.target.name);
     if (e.target.tagName !== `SPAN` && check || e.target.id) {
@@ -13,21 +17,28 @@ export default function handleAnswer(e, elements, limit) {
       const resArr = resultCount(match);
 
       if (resArr.length === limit) {
+
+        const levelTime = convertTime(state.time) - convertTime(startTime);
+
         const finalRes = {
           correct: !resArr.includes(false),
-          time: 15,
+          time: levelTime,
         };
         const nextState = Object.assign(state, {});
+
         if (!finalRes.correct) {
           let lifes = nextState.lifes;
           lifes--;
           nextState.lifes = lifes;
         }
-        nextState.currentScreen = state.stages[state.currentScreen].next;
+
         existCheck(`CLEAR`);
         resultCount(`CLEAR`);
         nextState[`results`].push(finalRes);
+
         stateHandler.state = nextState;
+
+        nextScreen();
       }
       return;
     }

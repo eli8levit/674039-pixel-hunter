@@ -1,17 +1,11 @@
 import GreetingView from '../views/greeting-view';
 import updateView from '../Controller/updateView';
-import stateHandler from '../Controller/StateHandler';
 import nextScreen from '../Controller/nextScreen';
 
-const greeting = new GreetingView();
-
-stateHandler.addListener((nextState) => {
-  if (nextState.currentScreen === `greeting`) {
-    updateView(greeting);
+export default class GreetingScreen {
+  init() {
+    this.view = new GreetingView();
+    this.view.nextClick = nextScreen;
+    updateView(this.view);
   }
-});
-
-greeting.nextClick = nextScreen;
-
-
-export default greeting;
+}

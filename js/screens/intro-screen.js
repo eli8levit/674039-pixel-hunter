@@ -1,22 +1,14 @@
 import IntroView from '../views/intro-view';
 import updateView from '../Controller/updateView';
-import stateHandler from '../Controller/StateHandler';
 import nextScreen from '../Controller/nextScreen';
 
-const intro = new IntroView();
 
-const {state} = stateHandler;
-
-intro.nextClick = nextScreen;
-
-if (state.currentScreen === `intro`) {
-  updateView(intro);
+class IntroScreen {
+  init() {
+    this.view = new IntroView();
+    this.view.nextClick = nextScreen;
+    updateView(this.view);
+  }
 }
 
-stateHandler.addListener((newState) => {
-  if (newState.currentScreen === `intro`) {
-    updateView(intro);
-  }
-});
-
-export default intro;
+export default IntroScreen;
