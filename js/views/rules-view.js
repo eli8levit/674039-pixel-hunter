@@ -7,19 +7,17 @@ export default class RulesView extends AbstractView {
   }
 
   nextClick() {
-
   }
 
-  onInput(input) {
-    const rulesBtn = document.getElementById(`rules__button`);
-    if (input.inputType !== `deleteContentBackward`) {
-      rulesBtn.disabled = false;
-      this.name += input.data;
-    } else {
-      this.name = this.name.substring(0, this.name.length - 1);
-    }
+  onInput() {
+  }
 
-    if (this.name === ``) {
+  toggleButton(activate) {
+    const rulesBtn = document.getElementById(`rules__button`);
+
+    if (activate) {
+      rulesBtn.disabled = false;
+    } else {
       rulesBtn.disabled = true;
     }
   }

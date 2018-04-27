@@ -1,24 +1,63 @@
-// function timer(time, done) {
-//   if (!time) {
-//     throw new Error(`time is not defined`);
-//   } else if (typeof time !== `number`) {
-//     throw new Error(`type of time must be a number`);
-//   } else if (!done) {
-//     throw new Error(`done is not defined`);
-//   } else if (typeof done !== `function`) {
-//     throw new Error(`type of done must be a function`);
-//   } else if (time > 1000) {
-//     throw new Error(`time is too big`);
-//   }
-//   return () => {
-//     const tick = setInterval(() => {
-//       if (time === 0) {
-//         clearInterval(tick);
-//         done();
-//       }
-//       time -= 1;
-//     }, 1000);
-//   };
-// }
 
-// export default timer;
+class Timer {
+  constructor() {
+    this._minuts = 0;
+    this._seconds = 1;
+    this.listeners = new Set();
+  }
+
+  start() {
+    this.timer = setInterval(() => {
+      this._seconds += 1;
+      if (this._seconds === 60) {
+        this._minuts += 1;
+        this._seconds = 0;
+      }
+      this.notificateAll();
+    }, 1000);
+  }
+
+  pause() {
+    clearInterval(this.timer);
+    this.timer = null;
+  }
+
+  continue() {
+    return this.start();
+  }
+
+  stop() {
+    this.removeAll();
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+    this._minuts = 0;
+    this._seconds = 1;
+  }
+
+  get time() {
+    return `${this._minuts}:${this._seconds}`;
+  }
+
+  addListener(listener) {
+    this.listeners.add(listener);
+  }
+
+  removeListener(listener) {
+    this.listeners.delete(listener);
+  }
+
+  removeAll() {
+    this.listeners.clear();
+  }
+
+  notificateAll() {
+    this.listeners.forEach((listener) => {
+      listener(this.time);
+    });
+  }
+}
+
+const timer = new Timer();
+export default timer;

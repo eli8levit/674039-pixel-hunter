@@ -2,14 +2,18 @@ const initialState = {
   currentScreen: `intro`,
   nameInput: ``,
   lifes: 3,
-  time: 0,
+  time: `0:1`,
   game: false,
   results: [],
+  totalResult: [],
+  startScreen: `intro`,
+  endScreen: `stats`,
+  gameScreen: `game`,
   stages: {
     'intro': {next: `greeting`},
     'greeting': {next: `rules`},
-    'rules': {next: `game1`},
-    'game1': {
+    'rules': {next: `game`},
+    'game': {
       screen: `game1`,
       next: `game2`,
       content: {

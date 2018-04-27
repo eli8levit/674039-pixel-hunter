@@ -10,7 +10,13 @@ const createFooter = (results) => {
   results.forEach((res) => {
     let status = ``;
     if (res.correct) {
-      status = res.fast ? `fast` : `slow`;
+      if (res.time < 10) {
+        status = `fast`;
+      } else if (res.time > 20) {
+        status = `slow`;
+      } else {
+        status = `correct`;
+      }
     } else {
       status = `wrong`;
     }
