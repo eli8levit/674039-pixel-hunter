@@ -1,5 +1,6 @@
 import stateHandler from './StateHandler';
 import nextScreen from './nextScreen';
+import QuestionType from '../data/questionType';
 
 const convertTime = (time) => {
   const [minutes, seconds] = time.split(`:`);
@@ -11,7 +12,8 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
     const check = existCheck(e.target.name);
     if (e.target.tagName !== `SPAN` && check || e.target.id) {
 
-      const element = state.currentScreen === `game5` || state.currentScreen === `game6` ? e.target : e.target.parentNode;
+      const element = state.stages[state.currentScreen].screen === QuestionType.ONE_OF_THREE ? e.target : e.target.parentNode;
+
       const answer = elements.indexOf(element);
       const match = state.stages[state.currentScreen].content.answers.includes(answer);
       const resArr = resultCount(match);

@@ -1,4 +1,3 @@
-
 import AbstractView from './AbstractView';
 
 export default class IntroView extends AbstractView {

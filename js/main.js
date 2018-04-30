@@ -1,4 +1,4 @@
-import Application from './screens/Application';
-import './utils/timer';
+import Loader from './Controller/Loader';
 
-Application.showIntro();
+Loader.showLoading();
+Loader.getData();
