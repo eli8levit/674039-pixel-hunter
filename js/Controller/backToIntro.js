@@ -1,16 +1,11 @@
 import stateHandler from './StateHandler';
-import timer from '../utils/timer';
+import timer from '../utils/Timer';
+import initialState from '../data/initialState';
 
 const backToIntro = () => {
   timer.stop();
   const {state} = stateHandler;
-  const nextState = Object.assign(state, {
-    lifes: 3,
-    game: false,
-    time: `0:1`,
-    results: [],
-    nameInput: ``
-  });
+  const nextState = Object.assign(state, initialState);
   stateHandler.state = nextState;
   stateHandler.screen = state.startScreen;
 };

@@ -1,0 +1,20 @@
+.error {
+  width: 800px;
+  height: 740px;
+  background: url("../img/broken_eggs.png") no-repeat center;
+  background-size: contain;
+  position: relative;
+  text-align: center;
+}
+
+.error__text, .error__message {
+  font-size: 28px;
+  top: 85%;
+
+  position: relative;
+  bottom: 0;
+}
+
+.error__message {
+  font-size: 23px;
+}

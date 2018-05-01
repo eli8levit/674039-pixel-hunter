@@ -2,7 +2,7 @@ import StatsView from '../views/stats-view';
 import HeaderView from '../views/header-view';
 import updateView from '../Controller/updateView';
 import backToIntro from '../Controller/backToIntro';
-import timer from '../utils/timer';
+import timer from '../utils/Timer';
 
 export default class Stats {
   constructor(state) {

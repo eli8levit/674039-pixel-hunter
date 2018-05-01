@@ -1,5 +1,5 @@
 import stateHandler from './StateHandler';
-import timer from '../utils/timer';
+import timer from '../utils/Timer';
 
 const nextScreen = () => {
   const {state} = stateHandler;
