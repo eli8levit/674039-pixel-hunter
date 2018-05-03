@@ -2,6 +2,7 @@ import StatsView from '../views/stats-view';
 import HeaderView from '../views/header-view';
 import updateView from '../Controller/updateView';
 import backToIntro from '../Controller/backToIntro';
+import Loader from '../Controller/Loader';
 import timer from '../utils/Timer';
 
 export default class Stats {
@@ -11,11 +12,28 @@ export default class Stats {
 
   init() {
     timer.stop();
-    this.header = new HeaderView();
-    this.view = new StatsView(this.state);
+    Loader.showLoading();
 
-    this.header.backClick = backToIntro;
+    const data = {
+      results: this.state.results,
+      lifes: this.state.lifes,
+    };
 
-    updateView(this.header, this.view);
+    const name = this.state.nameInput;
+
+    Loader.uploadData(data, name, () => {
+
+      Loader.getResults(name, (answers) => {
+
+        this.header = new HeaderView();
+        this.view = new StatsView(answers);
+
+        this.header.backClick = backToIntro;
+
+        updateView(this.header, this.view);
+      });
+    });
+
+
   }
 }

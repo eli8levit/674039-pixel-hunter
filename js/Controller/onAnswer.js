@@ -2,6 +2,8 @@ import stateHandler from './StateHandler';
 import nextScreen from './nextScreen';
 import QuestionType from '../data/questionType';
 
+const CLEAR_ANSWERS = `clear`;
+
 const convertTime = (time) => {
   const [minutes, seconds] = time.split(`:`);
   return parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
@@ -34,8 +36,8 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
           nextState.lifes = lifes;
         }
 
-        existCheck(`CLEAR`);
-        resultCount(`CLEAR`);
+        existCheck(CLEAR_ANSWERS);
+        resultCount(CLEAR_ANSWERS);
         nextState[`results`].push(finalRes);
 
         stateHandler.state = nextState;
@@ -50,7 +52,7 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
 const resultCount = (function () {
   let result = [];
   return (answer) => {
-    if (answer === `CLEAR`) {
+    if (answer === CLEAR_ANSWERS) {
       result = [];
       return result;
     } else if (answer) {
@@ -66,7 +68,7 @@ const existCheck = (function () {
   const elArr = new Set();
   let size = elArr.size;
   return (el) => {
-    if (el === `CLEAR`) {
+    if (el === CLEAR_ANSWERS) {
       return elArr.clear();
     } else {
       elArr.add(el);

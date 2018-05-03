@@ -6,7 +6,7 @@ import backToIntro from '../Controller/backToIntro';
 import timer from '../utils/Timer';
 import stateHandler from '../Controller/StateHandler';
 
-export default class Game1Screen {
+export default class GameScreen {
   constructor(state) {
     this.state = state;
   }
