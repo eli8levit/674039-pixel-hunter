@@ -1,25 +1,19 @@
+import screens from './screenTypes';
+
 const initialState = {
-  currentScreen: `loading`,
+  currentScreen: screens.LOADING,
   nameInput: ``,
   lifes: 3,
   time: `0:1`,
-  game: false,
   results: [],
-  totalResult: [],
-  startScreen: `intro`,
-  endScreen: `stats`,
+  startScreen: screens.INTRO,
+  endScreen: screens.STATS,
   gameScreen: `game0`,
   staticStages: {
-    'loading': {next: `intro`},
-    'intro': {next: `greeting`},
-    'greeting': {next: `rules`},
-    'rules': {next: `game0`},
-    'stats': {
-      screen: `stats`,
-      content: {
-        title: `Угадайте для каждого изображения фото или рисунок?`
-      }
-    }
+    'loading': {next: screens.INTRO},
+    'intro': {next: screens.GREETING},
+    'greeting': {next: screens.RULES},
+    'rules': {next: `game0`}
   }
 };
 

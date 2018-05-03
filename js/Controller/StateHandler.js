@@ -1,19 +1,14 @@
 import initialState from '../data/initialState';
 import Application from '../screens/Application';
+import screens from '../data/screenTypes';
 
 class StateHandler {
   constructor() {
     this._state = initialState;
-    this.listeners = new Set();
-  }
-
-  addListener(listener) {
-    this.listeners.add(listener);
   }
 
   set state(newState) {
     this._state = newState;
-    this.onStateChange();
   }
 
   get state() {
@@ -22,59 +17,37 @@ class StateHandler {
 
   set nameInput(nameInput) {
     this._state.nameInput = nameInput;
-    this.onStateChange();
-  }
-
-  get nameInput() {
-    return this.state.nameInput;
   }
 
   set time(time) {
     this._state.time = time;
-    this.onStateChange();
-  }
-
-  get time() {
-    return this._state.time;
-  }
-
-  set game(game) {
-    this._state.game = game;
   }
 
   set screen(screen) {
-    if (screen === this._state.endScreen) {
-      this._state.game = false;
-    }
     this._state.currentScreen = screen;
     this.processScreen(screen);
-    this.onStateChange();
   }
 
   processScreen(screen) {
     let view = screen;
+    const {GAME} = screens;
 
-    if (this._state.game) {
-      view = `game`;
+    if (screen.search(GAME) > -1) {
+      view = GAME;
     }
+
     switch (view) {
-      case `intro`: Application.showIntro(); break;
+      case screens.INTRO: Application.showIntro(); break;
 
-      case `greeting`: Application.showGreeting(); break;
+      case screens.GREETING: Application.showGreeting(); break;
 
-      case `rules`: Application.showRules(); break;
+      case screens.RULES: Application.showRules(); break;
 
-      case `game`: Application.showGame(); break;
+      case GAME: Application.showGame(); break;
 
-      case `stats`: Application.showStats(); break;
+      case screens.STATS: Application.showStats(); break;
 
       default: Application.showIntro();
-    }
-  }
-
-  onStateChange() {
-    for (let listener of this.listeners) {
-      listener(this._state);
     }
   }
 }

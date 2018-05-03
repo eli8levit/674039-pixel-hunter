@@ -19,7 +19,6 @@ class Timer {
 
   pause() {
     clearInterval(this.timer);
-    this.timer = null;
   }
 
   continue() {
@@ -30,7 +29,6 @@ class Timer {
     this.removeAll();
     if (this.timer) {
       clearInterval(this.timer);
-      this.timer = null;
     }
     this._minuts = 0;
     this._seconds = 1;
@@ -41,11 +39,10 @@ class Timer {
   }
 
   addListener(listener) {
+    if (!(listener instanceof Function)) {
+      throw new Error(`listener should be a function`);
+    }
     this.listeners.add(listener);
-  }
-
-  removeListener(listener) {
-    this.listeners.delete(listener);
   }
 
   removeAll() {
