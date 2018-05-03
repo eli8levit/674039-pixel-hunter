@@ -8,34 +8,23 @@ export default function adaptData(state, data, callback) {
     data.forEach((stage, key) => {
 
       const adaptedStage = {
-        screen: ``,
-        next: ``,
+        screen: stage.type,
+        next: `game${key + 1}`,
         content: {
-          answers: [],
-          title: ``,
-          photo: []
+          answers: decideWhichAnswer(stage.answers, stage.type),
+          title: stage.question
         }
       };
-
-      adaptedStage.screen = stage.type;
-
-      adaptedStage.content.title = stage.question;
 
       stage.answers.forEach((answer) => {
         adaptedStage.content.photo.push(answer.image.url);
       });
 
-      adaptedStage.content.answers = decideWhichAnswer(stage.answers, stage.type);
-
-      if (key + 1 === data.length) {
-        adaptedStage.next = state.endScreen;
-      } else {
-        adaptedStage.next = `game${key + 1}`;
-      }
-
       adaptedData[`game${key}`] = adaptedStage;
-
     });
+
+    adaptedData[`game${data.length - 1}`].next = state.endScreen;
+
   } catch (e) {
     callback(e);
   }
