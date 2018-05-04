@@ -56,5 +56,4 @@ class Timer {
   }
 }
 
-const timer = new Timer();
-export default timer;
+export default new Timer();
