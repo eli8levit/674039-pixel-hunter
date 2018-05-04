@@ -52,6 +52,4 @@ class StateHandler {
   }
 }
 
-const stateHandler = new StateHandler();
-
-export default stateHandler;
+export default new StateHandler();

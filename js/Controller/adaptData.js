@@ -12,7 +12,8 @@ export default function adaptData(state, data, callback) {
         next: `game${key + 1}`,
         content: {
           answers: decideWhichAnswer(stage.answers, stage.type),
-          title: stage.question
+          title: stage.question,
+          photo: []
         }
       };
 

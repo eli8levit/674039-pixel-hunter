@@ -88,11 +88,11 @@ export default class Game extends AbstractView {
                               <div class="game__option" id="question1">
                                 <img src="${stage.content.photo[0]}" alt="Option 1" width="304" height="455">
                               </div>
-                              <div class="game__option  game__option--selected" id="question1">
-                                <img src="${stage.content.photo[1]}" alt="Option 1" width="304" height="455">
+                              <div class="game__option  game__option--selected" id="question2">
+                                <img src="${stage.content.photo[1]}" alt="Option 2" width="304" height="455">
                               </div>
-                              <div class="game__option" id="question1" name="question1">
-                                <img src="${stage.content.photo[2]}" alt="Option 1" width="304" height="455">
+                              <div class="game__option" id="question3">
+                                <img src="${stage.content.photo[2]}" alt="Option 3" width="304" height="455">
                               </div>
                             </form>
                             ${footer(this.state.results)}

@@ -11,40 +11,51 @@ const convertTime = (time) => {
 
 export default function handleAnswer(e, elements, limit, state, startTime) {
   (() => {
-    const check = existCheck(e.target.name);
-    if (e.target.tagName !== `SPAN` && check || e.target.id) {
 
-      const element = state.stages[state.currentScreen].screen === QuestionType.ONE_OF_THREE ? e.target : e.target.parentNode;
+    let element = e.target.parentNode;
+    let identificator = e.target.name;
 
-      const answer = elements.indexOf(element);
-      const match = state.stages[state.currentScreen].content.answers.includes(answer);
-      const resArr = resultCount(match);
+    if (state.stages[state.currentScreen].screen === QuestionType.ONE_OF_THREE) {
+      element = e.target;
+      identificator = e.target.id;
+    }
 
-      if (resArr.length === limit) {
+    if (identificator) {
 
-        const levelTime = convertTime(state.time) - convertTime(startTime);
+      existCheck(e.target.name);
 
-        const finalRes = {
-          correct: !resArr.includes(false),
-          time: levelTime,
-        };
-        const nextState = Object.assign(state, {});
+      if (e.target.tagName !== `SPAN` || e.target.id) {
 
-        if (!finalRes.correct) {
-          let lifes = nextState.lifes;
-          lifes--;
-          nextState.lifes = lifes;
+        const answer = elements.indexOf(element);
+        const match = state.stages[state.currentScreen].content.answers.includes(answer);
+        const resArr = resultCount(match);
+
+        if (resArr.length === limit) {
+
+          const levelTime = convertTime(state.time) - convertTime(startTime);
+
+          const finalRes = {
+            correct: !resArr.includes(false),
+            time: levelTime,
+          };
+          const nextState = Object.assign(state, {});
+
+          if (!finalRes.correct) {
+            let lifes = nextState.lifes;
+            lifes--;
+            nextState.lifes = lifes;
+          }
+
+          existCheck(CLEAR_ANSWERS);
+          resultCount(CLEAR_ANSWERS);
+          nextState[`results`].push(finalRes);
+
+          stateHandler.state = nextState;
+
+          nextScreen();
         }
-
-        existCheck(CLEAR_ANSWERS);
-        resultCount(CLEAR_ANSWERS);
-        nextState[`results`].push(finalRes);
-
-        stateHandler.state = nextState;
-
-        nextScreen();
+        return;
       }
-      return;
     }
   })();
 }
@@ -66,17 +77,14 @@ const resultCount = (function () {
 
 const existCheck = (function () {
   const elArr = new Set();
-  let size = elArr.size;
   return (el) => {
     if (el === CLEAR_ANSWERS) {
       return elArr.clear();
     } else {
-      elArr.add(el);
-      if (elArr.size !== size) {
-        size = elArr.size;
-        return true;
+      if (elArr.has(el)) {
+        return resultCount(CLEAR_ANSWERS);
       } else {
-        return false;
+        return elArr.add(el);
       }
     }
   };
