@@ -41,10 +41,9 @@ const decideWhichAnswer = (answers, type) => {
 
   if (type === QuestionType.ONE_OF_THREE) {
 
-    let rigthType;
     const paintAmount = answers.filter((answer) => answer.type === AnswerType.PAINTING).length;
 
-    rigthType = paintAmount > 1 ? AnswerType.PHOTO : AnswerType.PAINTING;
+    const rigthType = paintAmount > 1 ? AnswerType.PHOTO : AnswerType.PAINTING;
 
     answers.find((answer, key) => {
       if (answer.type === rigthType) {
