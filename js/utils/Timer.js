@@ -13,7 +13,7 @@ class Timer {
         this._minuts += 1;
         this._seconds = 0;
       }
-      this.notificateAll();
+      this.notifyAll();
     }, 1000);
   }
 
@@ -49,7 +49,7 @@ class Timer {
     this.listeners.clear();
   }
 
-  notificateAll() {
+  notifyAll() {
     this.listeners.forEach((listener) => {
       listener(this.time);
     });

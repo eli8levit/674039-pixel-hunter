@@ -1,5 +1,5 @@
 import initialState from '../data/initialState';
-import Application from '../screens/Application';
+import Application from '../screens/application';
 import Screens from '../data/screenTypes';
 
 class StateHandler {
