@@ -61,17 +61,17 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
 }
 
 const resultCount = (function () {
-  let result = [];
+  let results = [];
   return (answer) => {
     if (answer === CLEAR_ANSWERS) {
-      result = [];
-      return result;
+      results = [];
+      return results;
     } else if (answer) {
-      result.push(true);
+      results.push(true);
     } else {
-      result.push(false);
+      results.push(false);
     }
-    return result;
+    return results;
   };
 }());
 

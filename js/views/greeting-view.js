@@ -11,8 +11,8 @@ export default class GreetingView extends AbstractView {
   }
 
   bind() {
-    const next = this.element.getElementsByClassName(`greeting__continue`);
-    next[0].addEventListener(`click`, this.nextClick, false);
+    const nextElements = this.element.getElementsByClassName(`greeting__continue`);
+    nextElements[0].addEventListener(`click`, this.nextClick, false);
   }
 
   get template() {

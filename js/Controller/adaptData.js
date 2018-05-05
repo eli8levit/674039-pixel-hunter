@@ -13,12 +13,12 @@ export default function adaptData(state, data, callback) {
         content: {
           answers: decideWhichAnswer(stage.answers, stage.type),
           title: stage.question,
-          photo: []
+          photos: []
         }
       };
 
       stage.answers.forEach((answer) => {
-        adaptedStage.content.photo.push(answer.image.url);
+        adaptedStage.content.photos.push(answer.image.url);
       });
 
       adaptedData[`game${key}`] = adaptedStage;

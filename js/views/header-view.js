@@ -12,8 +12,8 @@ export default class HeaderView extends AbstractView {
   }
 
   bind() {
-    const back = this.element.getElementsByClassName(`back`);
-    back[0].addEventListener(`click`, this.backClick, false);
+    const backButtons = this.element.getElementsByClassName(`back`);
+    backButtons[0].addEventListener(`click`, this.backClick, false);
 
     this.timer = this.element.querySelector(`.game__timer`);
   }
