@@ -25,10 +25,10 @@ class StateHandler {
 
   set screen(screen) {
     this._state.currentScreen = screen;
-    this.processScreen(screen);
+    this._processScreen(screen);
   }
 
-  processScreen(screen) {
+  _processScreen(screen) {
     let view = screen;
     const {GAME} = Screens;
 

@@ -11,7 +11,7 @@ export default class GameScreen {
     this.state = state;
   }
 
-  onTimer(time) {
+  _onTimer(time) {
     this.header.changeTime(time);
   }
 
@@ -29,7 +29,7 @@ export default class GameScreen {
 
     timer.addListener((time) => {
       stateHandler.time = time;
-      this.onTimer(time);
+      this._onTimer(time);
     });
   }
 }
