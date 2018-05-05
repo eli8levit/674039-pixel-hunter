@@ -41,9 +41,9 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
           const nextState = Object.assign(state, {});
 
           if (!finalRes.correct) {
-            let lifes = nextState.lifes;
-            lifes--;
-            nextState.lifes = lifes;
+            let lives = nextState.lives;
+            lives--;
+            nextState.lives = lives;
           }
 
           existCheck(CLEAR_ANSWERS);

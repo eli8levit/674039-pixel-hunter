@@ -7,7 +7,7 @@ const nextScreen = () => {
 
   if (next === state.gameScreen) {
     timer.start();
-  } else if (state.lifes === 0) {
+  } else if (state.lives === 0) {
     next = state.endScreen;
   }
   stateHandler.screen = next;

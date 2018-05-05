@@ -14,10 +14,10 @@ export default class StatsView extends AbstractView {
     return this.data.map((game, key) => {
 
       const statistic = bonusCount(game.results);
-      const totalPoints = pointCounter(game.results, game.lifes);
+      const totalPoints = pointCounter(game.results, game.lives);
 
       return `<div class="result">
-        ${key === 0 ? `<h1 class="result__title">${this.data[this.data.length - 1].lifes === 0 ? `FAIL` : `Победа!`}</h1>` : ``}
+        ${key === 0 ? `<h1 class="result__title">${this.data[this.data.length - 1].lives === 0 ? `FAIL` : `Победа!`}</h1>` : ``}
         <table class="result__table">
           <tr>
             <td class="result__number">${key + 1}.</td>
@@ -25,9 +25,9 @@ export default class StatsView extends AbstractView {
             ${footer(game.results)}
             </td>
             <td class="result__points">×&nbsp;100</td>
-            <td class="result__total">${game.lifes === 0 ? `FAIL` : statistic.correct * 100}</td>
+            <td class="result__total">${game.lives === 0 ? `FAIL` : statistic.correct * 100}</td>
           </tr>
-          ${game.lifes !== 0 ? `<tr>
+          ${game.lives !== 0 ? `<tr>
             <td></td>
             <td class="result__extra">Бонус за скорость:</td>
             <td class="result__extra">${statistic.fast}&nbsp;<span class="stats__result stats__result--fast"></span></td>
@@ -37,9 +37,9 @@ export default class StatsView extends AbstractView {
           <tr>
             <td></td>
             <td class="result__extra">Бонус за жизни:</td>
-            <td class="result__extra">${game.lifes}&nbsp;<span class="stats__result stats__result--alive"></span></td>
+            <td class="result__extra">${game.lives}&nbsp;<span class="stats__result stats__result--alive"></span></td>
             <td class="result__points">×&nbsp;50</td>
-            <td class="result__total">${game.lifes * 50}</td>
+            <td class="result__total">${game.lives * 50}</td>
           </tr>
           <tr>
             <td></td>

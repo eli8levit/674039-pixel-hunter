@@ -3,7 +3,7 @@ import screens from './screenTypes';
 const initialState = {
   currentScreen: screens.LOADING,
   nameInput: ``,
-  lifes: 3,
+  lives: 3,
   time: `0:1`,
   results: [],
   startScreen: screens.INTRO,

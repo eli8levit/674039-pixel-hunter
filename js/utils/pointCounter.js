@@ -1,8 +1,8 @@
-function pointCounter(answers, lifes) {
+function pointCounter(answers, lives) {
   if (!answers) {
     throw new TypeError(`no answers provided`);
-  } else if (!lifes && lifes !== 0) {
-    throw new TypeError(`no lifes provided`);
+  } else if (!lives && lives !== 0) {
+    throw new TypeError(`no lives provided`);
   } else if (answers.length < 10) {
     return -1;
   }
@@ -21,7 +21,7 @@ function pointCounter(answers, lifes) {
 
   let totalPoints = calcPoints.reduce((a, b) => a + b);
 
-  totalPoints += lifes * 50;
+  totalPoints += lives * 50;
 
   return totalPoints;
 }

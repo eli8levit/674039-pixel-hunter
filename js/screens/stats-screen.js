@@ -16,7 +16,7 @@ export default class Stats {
 
     const data = {
       results: this.state.results,
-      lifes: this.state.lifes,
+      lives: this.state.lives,
     };
 
     const name = this.state.nameInput;

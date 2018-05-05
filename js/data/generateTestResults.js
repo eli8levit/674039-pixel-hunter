@@ -1,21 +1,21 @@
 function generateResults() {
   const results = {
-    correctAvarage: [],
+    correctAverage: [],
     correctFast: [],
     correctSlow: [],
-    wrongAvarage: [],
+    wrongAverage: [],
     wrongFast: [],
     wrongSlow: []
   };
 
   for (let i = 1; i < 11; i++) {
     const fast = Math.floor(Math.random() * 10);
-    const avarage = Math.floor(Math.random() * 10) + 10;
+    const average = Math.floor(Math.random() * 10) + 10;
     const slow = Math.floor(Math.random() * 11) + 30;
 
-    results.correctAvarage.push({
+    results.correctAverage.push({
       correct: true,
-      time: avarage
+      time: average
     });
     results.correctFast.push({
       correct: true,
@@ -25,9 +25,9 @@ function generateResults() {
       correct: true,
       time: slow
     });
-    results.wrongAvarage.push({
+    results.wrongAverage.push({
       correct: i > 5 ? true : false,
-      time: avarage
+      time: average
     });
     results.wrongFast.push({
       correct: i > 5 ? true : false,
