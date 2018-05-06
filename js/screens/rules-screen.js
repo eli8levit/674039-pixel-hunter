@@ -24,7 +24,7 @@ export default class RulesScreen {
       }
     };
 
-    this.header.backClick = backToIntro;
+    this.header.onButtonBackClick = backToIntro;
 
     updateView(this.header, this.view);
   }

@@ -19,7 +19,7 @@ export default class GameScreen {
     this.header = new HeaderView(this.state, true);
     this.view = new Game(this.state);
 
-    this.header.backClick = () => {
+    this.header.onButtonBackClick = () => {
       backToIntro();
     };
 

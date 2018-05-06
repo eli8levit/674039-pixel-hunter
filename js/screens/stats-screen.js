@@ -28,7 +28,7 @@ export default class Stats {
         this.header = new HeaderView();
         this.view = new StatsView(answers);
 
-        this.header.backClick = backToIntro;
+        this.header.onButtonBackClick = backToIntro;
 
         updateView(this.header, this.view);
       });

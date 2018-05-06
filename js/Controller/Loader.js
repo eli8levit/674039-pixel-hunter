@@ -44,7 +44,7 @@ export default class Loader {
 
   static showError(err) {
     const header = new HeaderView();
-    header.backClick = backToIntro;
+    header.onButtonBackClick = backToIntro;
     updateView(header, new ErrorView(err));
   }
 
