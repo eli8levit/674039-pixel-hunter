@@ -17,14 +17,6 @@ class Timer {
     }, 1000);
   }
 
-  pause() {
-    clearInterval(this.timer);
-  }
-
-  continue() {
-    return this.start();
-  }
-
   stop() {
     this.removeAll();
     if (this.timer) {
