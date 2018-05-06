@@ -14,12 +14,7 @@ export default class RulesView extends AbstractView {
 
   toggleButton(activate) {
     const rulesBtn = document.getElementById(`rules__button`);
-
-    if (activate) {
-      rulesBtn.disabled = false;
-    } else {
-      rulesBtn.disabled = true;
-    }
+    rulesBtn.disabled = !activate;
   }
 
   bind() {
