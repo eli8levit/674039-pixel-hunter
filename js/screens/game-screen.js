@@ -3,7 +3,7 @@ import HeaderView from '../views/header-view';
 import updateView from '../Controller/updateView';
 import onAnswer from '../Controller/onAnswer';
 import backToIntro from '../Controller/backToIntro';
-import timer from '../utils/Timer';
+import timer from '../utils/timer';
 import stateHandler from '../Controller/StateHandler';
 
 export default class GameScreen {

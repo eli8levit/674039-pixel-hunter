@@ -1,7 +1,11 @@
 
 import AbstractView from './AbstractView';
 import footer from './footer';
-import QuestionType from '../data/questionType';
+
+import {QuestionTypes} from '../data/config';
+
+const TWO_OPTIONS = 2;
+const SINGLE_OPTION = 1;
 
 export default class Game extends AbstractView {
   constructor(state) {
@@ -20,8 +24,8 @@ export default class Game extends AbstractView {
 
   bind() {
     const startTime = this.state.time;
-    const className = this.game === QuestionType.ONE_OF_THREE ? `game__option` : `game__answer`;
-    const limit = this.game === QuestionType.TWO_OF_TWO ? 2 : 1;
+    const className = this.game === QuestionTypes.ONE_OF_THREE ? `game__option` : `game__answer`;
+    const limit = this.game === QuestionTypes.TWO_OF_TWO ? TWO_OPTIONS : SINGLE_OPTION;
     const answerCollection = this.element.getElementsByClassName(className);
     const answerArr = Array.prototype.slice.call(answerCollection);
 
@@ -35,7 +39,7 @@ export default class Game extends AbstractView {
     let res = ``;
 
     switch (this.game) {
-      case QuestionType.TWO_OF_TWO: res = `<div class="game">
+      case QuestionTypes.TWO_OF_TWO: res = `<div class="game">
                               <p class="game__task">${stage.content.title}</p>
                               <form class="game__content">
                                 <div class="game__option">
@@ -64,7 +68,7 @@ export default class Game extends AbstractView {
                               ${footer(this.state.results)}
                             </div>`; break;
 
-      case QuestionType.TINDER_LIKE: res = `<div class="game" id="game2">
+      case QuestionTypes.TINDER_LIKE: res = `<div class="game" id="game2">
                             <p class="game__task">${stage.content.title}</p>
                             <form class="game__content  game__content--wide">
                               <div class="game__option">
@@ -82,7 +86,7 @@ export default class Game extends AbstractView {
                             ${footer(this.state.results)}
                           </div>`; break;
 
-      case QuestionType.ONE_OF_THREE: res = `<div class="game">
+      case QuestionTypes.ONE_OF_THREE: res = `<div class="game">
                             <p class="game__task">${stage.content.title}</p>
                             <form class="game__content  game__content--triple">
                               <div class="game__option" id="question1">

@@ -1,6 +1,6 @@
 import initialState from '../data/initialState';
 import Application from '../screens/application';
-import Screens from '../data/screenTypes';
+import {ScreenTypes} from '../data/config';
 
 class StateHandler {
   constructor() {
@@ -30,22 +30,22 @@ class StateHandler {
 
   _processScreen(screen) {
     let view = screen;
-    const {GAME} = Screens;
+    const {GAME} = ScreenTypes;
 
     if (screen.search(GAME) > -1) {
       view = GAME;
     }
 
     switch (view) {
-      case Screens.INTRO: Application.showIntro(); break;
+      case ScreenTypes.INTRO: Application.showIntro(); break;
 
-      case Screens.GREETING: Application.showGreeting(); break;
+      case ScreenTypes.GREETING: Application.showGreeting(); break;
 
-      case Screens.RULES: Application.showRules(); break;
+      case ScreenTypes.RULES: Application.showRules(); break;
 
       case GAME: Application.showGame(); break;
 
-      case Screens.STATS: Application.showStats(); break;
+      case ScreenTypes.STATS: Application.showStats(); break;
 
       default: Application.showIntro();
     }

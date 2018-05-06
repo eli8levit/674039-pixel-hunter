@@ -1,3 +1,5 @@
+import {Answers} from '../data/config';
+
 const footer = (results) => `<div class="stats">
                               <ul class="stats">
                                 ${createFooter(results)}
@@ -10,9 +12,9 @@ const createFooter = (results) => {
   results.forEach((res) => {
     let status = ``;
     if (res.correct) {
-      if (res.time < 10) {
+      if (res.time < Answers.FAST) {
         status = `fast`;
-      } else if (res.time > 20) {
+      } else if (res.time > Answers.SLOW) {
         status = `slow`;
       } else {
         status = `correct`;
@@ -23,7 +25,7 @@ const createFooter = (results) => {
     str += `<li class="stats__result stats__result--${status}"></li>`;
   });
 
-  for (let i = results.length; i < 10; i++) {
+  for (let i = results.length; i < Answers.ANSWERS_AMOUNT; i++) {
     str += `<li class="stats__result stats__result--unknown">`;
   }
   return str;

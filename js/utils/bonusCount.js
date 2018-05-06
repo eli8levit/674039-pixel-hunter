@@ -1,3 +1,5 @@
+import {Answers} from '../data/config';
+
 export default function bonusCount(answers) {
   const statistic = {
     correct: 0,
@@ -8,9 +10,9 @@ export default function bonusCount(answers) {
   answers.forEach((answer) => {
     if (answer.correct) {
       statistic.correct += 1;
-      if (answer.time < 10) {
+      if (answer.time < Answers.FAST) {
         statistic.fast += 1;
-      } else if (answer.time > 20) {
+      } else if (answer.time > Answers.SLOW) {
         statistic.slow += 1;
       }
     } else {

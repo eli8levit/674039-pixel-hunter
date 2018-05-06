@@ -1,5 +1,5 @@
 import {expect} from 'chai';
-import timer from './Timer';
+import timer from './timer';
 
 describe(`Timer`, () => {
   it(`should throw an error if adding listener that's not func`, () => {

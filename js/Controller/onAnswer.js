@@ -1,12 +1,13 @@
 import stateHandler from './StateHandler';
 import nextScreen from './nextScreen';
-import QuestionType from '../data/questionType';
+import {QuestionTypes} from '../data/config';
 
 const CLEAR_ANSWERS = `clear`;
+const MINUTE = 60;
 
 const convertTime = (time) => {
   const [minutes, seconds] = time.split(`:`);
-  return parseInt(minutes, 10) * 60 + parseInt(seconds, 10);
+  return parseInt(minutes, 10) * MINUTE + parseInt(seconds, 10);
 };
 
 export default function handleAnswer(e, elements, limit, state, startTime) {
@@ -15,7 +16,7 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
     let element = e.target.parentNode;
     let identificator = e.target.name;
 
-    if (state.stages[state.currentScreen].screen === QuestionType.ONE_OF_THREE) {
+    if (state.stages[state.currentScreen].screen === QuestionTypes.ONE_OF_THREE) {
       element = e.target;
       identificator = e.target.id;
     }

@@ -1,18 +1,18 @@
-import Screens from './screenTypes';
+import {ScreenTypes} from './config';
 
 const initialState = {
-  currentScreen: Screens.LOADING,
+  currentScreen: ScreenTypes.LOADING,
   nameInput: ``,
   lives: 3,
   time: `0:1`,
   results: [],
-  startScreen: Screens.INTRO,
-  endScreen: Screens.STATS,
+  startScreen: ScreenTypes.INTRO,
+  endScreen: ScreenTypes.STATS,
   gameScreen: `game0`,
   staticStages: {
-    'loading': {next: Screens.INTRO},
-    'intro': {next: Screens.GREETING},
-    'greeting': {next: Screens.RULES},
+    'loading': {next: ScreenTypes.INTRO},
+    'intro': {next: ScreenTypes.GREETING},
+    'greeting': {next: ScreenTypes.RULES},
     'rules': {next: `game0`}
   }
 };

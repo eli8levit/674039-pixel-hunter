@@ -1,3 +1,5 @@
+import {Answers} from './config';
+
 function generateResults() {
   const results = {
     correctAverageAnswers: [],
@@ -8,9 +10,9 @@ function generateResults() {
     wrongSlowAnswers: []
   };
 
-  for (let i = 1; i < 11; i++) {
-    const fast = Math.floor(Math.random() * 10);
-    const average = Math.floor(Math.random() * 10) + 10;
+  for (let i = 1; i < Answers.ANSWERS_AMOUNT + 1; i++) {
+    const fast = Math.floor(Math.random() * Answers.ANSWERS_AMOUNT);
+    const average = Math.floor(Math.random() * Answers.ANSWERS_AMOUNT) + Answers.ANSWERS_AMOUNT;
     const slow = Math.floor(Math.random() * 11) + 30;
 
     results.correctAverageAnswers.push({

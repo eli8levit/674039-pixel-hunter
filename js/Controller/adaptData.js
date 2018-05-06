@@ -1,5 +1,4 @@
-import QuestionType from '../data/questionType';
-import AnswerType from '../data/answerType';
+import {QuestionTypes, AnswerTypes, Buttons} from '../data/config';
 
 export default function adaptData(state, data, callback) {
   let adaptedData = {};
@@ -39,11 +38,11 @@ const decideWhichAnswer = (answers, type) => {
   let firstAnswer;
   let secondAnswer;
 
-  if (type === QuestionType.ONE_OF_THREE) {
+  if (type === QuestionTypes.ONE_OF_THREE) {
 
-    const paintAmount = answers.filter((answer) => answer.type === AnswerType.PAINTING).length;
+    const paintAmount = answers.filter((answer) => answer.type === AnswerTypes.PAINTING).length;
 
-    const rigthType = paintAmount > 1 ? AnswerType.PHOTO : AnswerType.PAINTING;
+    const rigthType = paintAmount > 1 ? AnswerTypes.PHOTO : AnswerTypes.PAINTING;
 
     answers.find((answer, key) => {
       if (answer.type === rigthType) {
@@ -51,14 +50,14 @@ const decideWhichAnswer = (answers, type) => {
       }
     });
 
-  } else if (type === QuestionType.TWO_OF_TWO) {
+  } else if (type === QuestionTypes.TWO_OF_TWO) {
 
-    firstAnswer = answers[0].type === AnswerType.PHOTO ? 0 : 1;
-    secondAnswer = answers[1].type === AnswerType.PHOTO ? 2 : 3;
+    firstAnswer = answers[0].type === AnswerTypes.PHOTO ? Buttons.FIRST_PHOTO : Buttons.FIRST_PAINTING;
+    secondAnswer = answers[1].type === AnswerTypes.PHOTO ? Buttons.SECOND_PHOTO : Buttons.SECOND_PAINTING;
     adaptedAnswers.push(firstAnswer, secondAnswer);
 
-  } else if (type === QuestionType.TINDER_LIKE) {
-    firstAnswer = answers[0].type === AnswerType.PHOTO ? 0 : 1;
+  } else if (type === QuestionTypes.TINDER_LIKE) {
+    firstAnswer = answers[0].type === AnswerTypes.PHOTO ? Buttons.FIRST_PHOTO : Buttons.FIRST_PAINTING;
     adaptedAnswers.push(firstAnswer);
   }
 
