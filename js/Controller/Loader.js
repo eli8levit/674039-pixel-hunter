@@ -12,11 +12,10 @@ const BASE_URL = `https://es.dump.academy/pixel-hunter`;
 const DEFAULT_NAME = `unidentified_raccoon`;
 
 const checkStatus = (res) => {
-  if (res.ok) {
-    return res;
-  } else {
+  if (!res.ok) {
     throw new Error(`${res.status}: ${res.statusText || `something went wrong on keks server...`}`);
   }
+  return res;
 };
 
 export default class Loader {

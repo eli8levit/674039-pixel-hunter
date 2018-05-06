@@ -80,12 +80,9 @@ const existCheck = (function () {
   return (el) => {
     if (el === CLEAR_ANSWERS) {
       return elArr.clear();
-    } else {
-      if (elArr.has(el)) {
-        return resultCount(CLEAR_ANSWERS);
-      } else {
-        return elArr.add(el);
-      }
+    } else if (elArr.has(el)) {
+      return resultCount(CLEAR_ANSWERS);
     }
+    return elArr.add(el);
   };
 })();
