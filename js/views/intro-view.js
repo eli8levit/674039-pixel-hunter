@@ -10,8 +10,8 @@ export default class IntroView extends AbstractView {
   }
 
   bind() {
-    const buttons = this.element.getElementsByClassName(`intro__asterisk`);
-    buttons[0].addEventListener(`click`, this.nextClick, false);
+    const nextButton = this.element.querySelector(`.intro__asterisk`);
+    nextButton.addEventListener(`click`, this.nextClick, false);
   }
 
   get template() {

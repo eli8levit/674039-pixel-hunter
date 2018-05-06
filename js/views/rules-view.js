@@ -23,11 +23,11 @@ export default class RulesView extends AbstractView {
   }
 
   bind() {
-    const rulesBtn = this.element.getElementsByClassName(`rules__button`);
-    rulesBtn[0].addEventListener(`click`, this.nextClick, false);
+    const rulesBtn = this.element.querySelector(`.rules__button`);
+    rulesBtn.addEventListener(`click`, this.nextClick, false);
 
-    const input = this.element.getElementsByClassName(`rules__input`);
-    input[0].addEventListener(`input`, this.onInput, false);
+    const input = this.element.querySelector(`.rules__input`);
+    input.addEventListener(`input`, this.onInput, false);
   }
 
   get template() {
