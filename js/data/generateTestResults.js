@@ -26,15 +26,15 @@ function generateResults() {
       time: slow
     });
     results.wrongAverageAnswers.push({
-      correct: i > 5 ? true : false,
+      correct: i > 5,
       time: average
     });
     results.wrongFastAnswers.push({
-      correct: i > 5 ? true : false,
+      correct: i > 5,
       time: fast
     });
     results.wrongSlowAnswers.push({
-      correct: i > 5 ? true : false,
+      correct: i > 5,
       time: slow
     });
   }
