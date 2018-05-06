@@ -10,7 +10,7 @@ function generateResults() {
     wrongSlowAnswers: []
   };
 
-  for (let i = 1; i < Answers.ANSWERS_AMOUNT + 1; i++) {
+  for (let i = 0; i < Answers.ANSWERS_AMOUNT; i++) {
     const fast = Math.floor(Math.random() * Answers.ANSWERS_AMOUNT);
     const average = Math.floor(Math.random() * Answers.ANSWERS_AMOUNT) + Answers.ANSWERS_AMOUNT;
     const slow = Math.floor(Math.random() * 11) + 30;
@@ -28,15 +28,15 @@ function generateResults() {
       time: slow
     });
     results.wrongAverageAnswers.push({
-      correct: i > 5,
+      correct: i > 4,
       time: average
     });
     results.wrongFastAnswers.push({
-      correct: i > 5,
+      correct: i > 4,
       time: fast
     });
     results.wrongSlowAnswers.push({
-      correct: i > 5,
+      correct: i > 4,
       time: slow
     });
   }
