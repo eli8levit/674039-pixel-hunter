@@ -3,7 +3,7 @@ import {ScreenTypes} from './config';
 const initialState = {
   currentScreen: ScreenTypes.LOADING,
   nameInput: ``,
-  lives: 3,
+  lives: 4,
   time: `0:1`,
   results: [],
   startScreen: ScreenTypes.INTRO,
