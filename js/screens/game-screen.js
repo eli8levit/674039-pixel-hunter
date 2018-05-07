@@ -5,6 +5,10 @@ import onAnswer from '../Controller/onAnswer';
 import backToIntro from '../Controller/backToIntro';
 import timer from '../utils/timer';
 import stateHandler from '../Controller/StateHandler';
+import initialState from '../data/initialState';
+import nextScreen from '../Controller/nextScreen';
+
+const LAST_TIME = 5;
 
 export default class GameScreen {
   constructor(state) {
@@ -16,20 +20,31 @@ export default class GameScreen {
   }
 
   init() {
+    timer.start();
     this.header = new HeaderView(this.state, true);
     this.view = new Game(this.state);
 
-    this.header.onButtonBackClick = () => {
-      backToIntro();
-    };
+    this.header.onButtonBackClick = backToIntro;
 
     this.view.onAnswer = onAnswer;
 
     updateView(this.header, this.view);
 
     timer.addListener((time) => {
-      stateHandler.time = time;
       this._onTimer(time);
+
+      if (time === LAST_TIME) {
+        this.header.onBlink();
+      } else if (time === 0) {
+        const nextState = Object.assign({}, stateHandler.state);
+        nextState.results.push({
+          correct: false,
+          time: initialState.time
+        });
+        stateHandler.state = nextState;
+        timer.stop();
+        nextScreen();
+      }
     });
   }
 }

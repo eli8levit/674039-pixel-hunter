@@ -12,15 +12,20 @@ export default class HeaderView extends AbstractView {
 
   }
 
+  onBlink() {
+    const timer = document.querySelector(`.game__timer`);
+    timer.className += ` blink`;
+  }
+
+  changeTime(time) {
+    this.timer.textContent = time;
+  }
+
   bind() {
     const backButton = this.element.querySelector(`.back`);
     backButton.addEventListener(`click`, this.onButtonBackClick, false);
 
     this.timer = this.element.querySelector(`.game__timer`);
-  }
-
-  changeTime(time) {
-    this.timer.textContent = time;
   }
 
   get template() {

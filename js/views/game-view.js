@@ -23,14 +23,13 @@ export default class Game extends AbstractView {
   }
 
   bind() {
-    const startTime = this.state.time;
     const className = this.game === QuestionTypes.ONE_OF_THREE ? `game__option` : `game__answer`;
     const limit = this.game === QuestionTypes.TWO_OF_TWO ? TWO_OPTIONS : SINGLE_OPTION;
     const answerCollection = this.element.getElementsByClassName(className);
     const answerArr = Array.prototype.slice.call(answerCollection);
 
     answerArr.forEach((answer) => {
-      answer.addEventListener(`click`, (e) => this.onAnswer(e, answerArr, limit, this.state, startTime), false);
+      answer.addEventListener(`click`, (e) => this.onAnswer(e, answerArr, limit, this.state), false);
     });
   }
 

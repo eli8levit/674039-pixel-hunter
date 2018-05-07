@@ -1,49 +1,44 @@
+import initialState from '../data/initialState';
 
 class Timer {
   constructor() {
-    this._minuts = 0;
-    this._seconds = 1;
-    this.listeners = new Set();
+    this._listeners = new Set();
+    this._time = initialState.time;
   }
 
   start() {
     this.timer = setInterval(() => {
-      this._seconds += 1;
-      if (this._seconds === 60) {
-        this._minuts += 1;
-        this._seconds = 0;
-      }
-      this.notifyAll();
+      this._time--;
+      this._notifyAll();
     }, 1000);
   }
 
   stop() {
-    this.removeAll();
+    this._time = initialState.time;
+    this._removeAll();
     if (this.timer) {
       clearInterval(this.timer);
     }
-    this._minuts = 0;
-    this._seconds = 1;
   }
 
   get time() {
-    return `${this._minuts}:${this._seconds}`;
+    return this._time;
   }
 
   addListener(listener) {
     if (!(listener instanceof Function)) {
       throw new Error(`listener should be a function`);
     }
-    this.listeners.add(listener);
+    this._listeners.add(listener);
   }
 
-  removeAll() {
-    this.listeners.clear();
+  _removeAll() {
+    this._listeners.clear();
   }
 
-  notifyAll() {
-    this.listeners.forEach((listener) => {
-      listener(this.time);
+  _notifyAll() {
+    this._listeners.forEach((listener) => {
+      listener(this._time);
     });
   }
 }

@@ -4,7 +4,7 @@ const initialState = {
   currentScreen: ScreenTypes.LOADING,
   nameInput: ``,
   lives: 4,
-  time: `0:1`,
+  time: 30,
   results: [],
   startScreen: ScreenTypes.INTRO,
   endScreen: ScreenTypes.STATS,

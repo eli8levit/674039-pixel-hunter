@@ -1,16 +1,11 @@
 import stateHandler from './StateHandler';
 import nextScreen from './nextScreen';
 import {QuestionTypes} from '../data/config';
+import timer from '../utils/timer';
 
 const CLEAR_ANSWERS = `clear`;
-const MINUTE = 60;
 
-const convertTime = (time) => {
-  const [minutes, seconds] = time.split(`:`);
-  return parseInt(minutes, 10) * MINUTE + parseInt(seconds, 10);
-};
-
-export default function handleAnswer(e, elements, limit, state, startTime) {
+export default function handleAnswer(e, elements, limit, state) {
   (() => {
 
     let element = e.target.parentNode;
@@ -33,13 +28,11 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
 
         if (resArr.length === limit) {
 
-          const levelTime = convertTime(state.time) - convertTime(startTime);
-
           const finalRes = {
             correct: !resArr.includes(false),
-            time: levelTime,
+            time: state.time - timer.time,
           };
-          const nextState = Object.assign(state, {});
+          const nextState = Object.assign({}, state);
 
           if (!finalRes.correct) {
             let lives = nextState.lives;
@@ -53,6 +46,7 @@ export default function handleAnswer(e, elements, limit, state, startTime) {
 
           stateHandler.state = nextState;
 
+          timer.stop();
           nextScreen();
         }
         return;

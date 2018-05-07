@@ -19,10 +19,6 @@ class StateHandler {
     this._state.nameInput = nameInput;
   }
 
-  set time(time) {
-    this._state.time = time;
-  }
-
   set screen(screen) {
     this._state.currentScreen = screen;
     this._processScreen(screen);
