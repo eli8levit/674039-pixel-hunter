@@ -6,6 +6,10 @@ class Timer {
     this._time = initialState.time;
   }
 
+  get time() {
+    return this._time;
+  }
+
   start() {
     this.timer = setInterval(() => {
       this._time--;
@@ -19,10 +23,6 @@ class Timer {
     if (this.timer) {
       clearInterval(this.timer);
     }
-  }
-
-  get time() {
-    return this._time;
   }
 
   addListener(listener) {

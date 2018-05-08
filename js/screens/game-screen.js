@@ -15,16 +15,17 @@ export default class GameScreen {
     this.state = state;
   }
 
-  _onTimer(time) {
-    this.header.changeTime(time);
-  }
-
   init() {
     timer.start();
     this.header = new HeaderView(this.state, true);
     this.view = new Game(this.state);
 
-    this.header.onButtonBackClick = backToIntro;
+    this.header.onButtonBackClick = () => {
+      if (window.confirm(`Вы в этом уверены? Текущая игра будет утеряна навечно! Я бы подумал дважды...`)) {
+        backToIntro();
+      }
+      return;
+    };
 
     this.view.onAnswer = onAnswer;
 
@@ -46,5 +47,9 @@ export default class GameScreen {
         nextScreen();
       }
     });
+  }
+
+  _onTimer(time) {
+    this.header.changeTime(time);
   }
 }

@@ -7,12 +7,12 @@ class StateHandler {
     this._state = initialState;
   }
 
-  set state(newState) {
-    this._state = newState;
-  }
-
   get state() {
     return this._state;
+  }
+
+  set state(newState) {
+    this._state = newState;
   }
 
   set nameInput(nameInput) {

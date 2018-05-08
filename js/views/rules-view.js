@@ -6,15 +6,17 @@ export default class RulesView extends AbstractView {
     this.name = ``;
   }
 
-  nextClick() {
-  }
-
-  onInput() {
-  }
-
   toggleButton(activate) {
     const rulesBtn = document.getElementById(`rules__button`);
     rulesBtn.disabled = !activate;
+  }
+
+  nextClick() {
+
+  }
+
+  onInput() {
+
   }
 
   bind() {

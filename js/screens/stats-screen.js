@@ -33,7 +33,5 @@ export default class Stats {
         updateView(this.header, this.view);
       });
     });
-
-
   }
 }

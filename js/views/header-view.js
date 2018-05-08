@@ -8,10 +8,6 @@ export default class HeaderView extends AbstractView {
     this.state = state;
   }
 
-  onButtonBackClick() {
-
-  }
-
   onBlink() {
     const timer = document.querySelector(`.game__timer`);
     timer.className += ` blink`;
@@ -19,6 +15,10 @@ export default class HeaderView extends AbstractView {
 
   changeTime(time) {
     this.timer.textContent = time;
+  }
+
+  onButtonBackClick() {
+
   }
 
   bind() {
