@@ -1,4 +1,4 @@
-import initialState from '../data/initialState';
+import initialState from '../data/initial-state';
 import Application from '../screens/application';
 import {ScreenTypes} from '../data/config';
 

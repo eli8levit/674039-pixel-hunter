@@ -1,8 +1,8 @@
 
-import AbstractView from './AbstractView';
-import pointCounter from '../utils/pointCounter';
-import bonusCount from '../utils/bonusCount';
-import footer from './footer';
+import AbstractView from './abstract-view';
+import pointCount from '../utils/point-сount';
+import bonusCount from '../utils/bonus-сount';
+import getFooter from './footer';
 
 export default class StatsView extends AbstractView {
   constructor(data) {
@@ -14,7 +14,7 @@ export default class StatsView extends AbstractView {
     return this.data.map((game, key) => {
 
       const statistic = bonusCount(game.results);
-      const totalPoints = pointCounter(game.results, game.lives);
+      const totalPoints = pointCount(game.results, game.lives);
 
       return `<div class="result">
         ${key === 0 ? `<h1 class="result__title">${this.data[this.data.length - 1].lives === 0 ? `FAIL` : `Победа!`}</h1>` : ``}
@@ -22,7 +22,7 @@ export default class StatsView extends AbstractView {
           <tr>
             <td class="result__number">${key + 1}.</td>
             <td colspan="2">
-            ${footer(game.results)}
+            ${getFooter(game.results)}
             </td>
             <td class="result__points">×&nbsp;100</td>
             <td class="result__total">${game.lives === 0 ? `FAIL` : statistic.correct * 100}</td>

@@ -1,7 +1,7 @@
-import stateHandler from './StateHandler';
-import nextScreen from './nextScreen';
+import StateHandler from './state-handler';
+import changeScreen from './change-screen';
 import {QuestionTypes} from '../data/config';
-import timer from '../utils/timer';
+import Timer from '../utils/timer';
 
 const CLEAR_ANSWERS = `clear`;
 
@@ -30,7 +30,7 @@ export default function handleAnswer(e, elements, limit, state) {
 
           const finalRes = {
             correct: !resArr.includes(false),
-            time: state.time - timer.time,
+            time: state.time - Timer.time,
           };
           const nextState = Object.assign({}, state);
 
@@ -44,10 +44,10 @@ export default function handleAnswer(e, elements, limit, state) {
           resultCount(CLEAR_ANSWERS);
           nextState[`results`].push(finalRes);
 
-          stateHandler.state = nextState;
+          StateHandler.state = nextState;
 
-          timer.stop();
-          nextScreen();
+          Timer.stop();
+          changeScreen();
         }
         return;
       }

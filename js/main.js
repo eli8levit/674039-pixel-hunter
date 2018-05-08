@@ -1,4 +1,4 @@
-import Loader from './Controller/loader';
+import Loader from './controller/loader';
 
 Loader.showLoading();
 Loader.getData();

@@ -1,6 +1,6 @@
-import {Answers} from '../data/config';
+import {Answers, Points} from '../data/config';
 
-function pointCounter(answers, lives) {
+function pointCount(answers, lives) {
   if (!answers) {
     throw new TypeError(`no answers provided`);
   } else if (!lives && lives !== 0) {
@@ -13,9 +13,9 @@ function pointCounter(answers, lives) {
     let singlePoints = 0;
     if (answer.correct) {
       switch (true) {
-        case answer.time < Answers.FAST: singlePoints = 150; break;
-        case answer.time > Answers.SLOW: singlePoints = 50; break;
-        default: singlePoints = 100; break;
+        case answer.time < Answers.FAST: singlePoints = Points.FAST_ANSWER; break;
+        case answer.time > Answers.SLOW: singlePoints = Points.SLOW_ANSWER; break;
+        default: singlePoints = Points.RIGHT_ANSWER; break;
       }
     }
     return singlePoints;
@@ -27,4 +27,4 @@ function pointCounter(answers, lives) {
 
   return totalPoints;
 }
-export default pointCounter;
+export default pointCount;

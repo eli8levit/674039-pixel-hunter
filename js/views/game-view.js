@@ -1,6 +1,6 @@
 
-import AbstractView from './AbstractView';
-import footer from './footer';
+import AbstractView from './abstract-view';
+import getFooter from './footer';
 
 import {QuestionTypes} from '../data/config';
 
@@ -64,7 +64,7 @@ export default class Game extends AbstractView {
                                   </label>
                                 </div>
                               </form>
-                              ${footer(this.state.results)}
+                              ${getFooter(this.state.results)}
                             </div>`; break;
 
       case QuestionTypes.TINDER_LIKE: res = `<div class="game" id="game2">
@@ -82,7 +82,7 @@ export default class Game extends AbstractView {
                                 </label>
                               </div>
                             </form>
-                            ${footer(this.state.results)}
+                            ${getFooter(this.state.results)}
                           </div>`; break;
 
       case QuestionTypes.ONE_OF_THREE: res = `<div class="game">
@@ -98,7 +98,7 @@ export default class Game extends AbstractView {
                                 <img src="${stage.content.photos[2]}" alt="Option 3" width="304" height="455">
                               </div>
                             </form>
-                            ${footer(this.state.results)}
+                            ${getFooter(this.state.results)}
                           </div>`; break;
 
       default: res = `<h1>Template not found</h1>`;

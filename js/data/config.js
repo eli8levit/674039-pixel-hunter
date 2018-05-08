@@ -31,4 +31,10 @@ const Buttons = {
   SECOND_PAINTING: 3
 };
 
-export {AnswerTypes, QuestionTypes, ScreenTypes, Answers, Buttons};
+const Points = {
+  FAST_ANSWER: 150,
+  SLOW_ANSWER: 50,
+  RIGHT_ANSWER: 100
+};
+
+export {AnswerTypes, QuestionTypes, ScreenTypes, Answers, Buttons, Points};

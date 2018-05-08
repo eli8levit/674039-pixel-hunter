@@ -1,11 +1,11 @@
 import IntroView from '../views/intro-view';
-import updateView from '../Controller/updateView';
-import nextScreen from '../Controller/nextScreen';
+import updateView from '../controller/update-view';
+import changeScreen from '../controller/change-screen';
 
 class IntroScreen {
   init() {
     this.view = new IntroView();
-    this.view.nextClick = nextScreen;
+    this.view.nextClick = changeScreen;
     updateView(this.view);
   }
 }

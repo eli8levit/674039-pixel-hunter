@@ -1,9 +1,9 @@
 import RulesView from '../views/rules-view';
 import HeaderView from '../views/header-view';
-import stateHandler from '../Controller/StateHandler';
-import backToIntro from '../Controller/backToIntro';
-import nextScreen from '../Controller/nextScreen';
-import updateView from '../Controller/updateView';
+import StateHandler from '../controller/state-handler';
+import returnToIntro from '../controller/return-to-intro';
+import changeScreen from '../controller/change-screen';
+import updateView from '../controller/update-view';
 
 export default class RulesScreen {
   constructor(name) {
@@ -14,17 +14,17 @@ export default class RulesScreen {
     this.header = new HeaderView();
     this.view = new RulesView(this.name);
 
-    this.view.nextClick = nextScreen;
+    this.view.nextClick = changeScreen;
 
     this.view.onInput = ({target: {value}}) => {
-      stateHandler.nameInput = value;
+      StateHandler.nameInput = value;
       this.view.toggleButton(true);
       if (value === ``) {
         this.view.toggleButton(false);
       }
     };
 
-    this.header.onButtonBackClick = backToIntro;
+    this.header.onButtonBackClick = returnToIntro;
 
     updateView(this.header, this.view);
   }

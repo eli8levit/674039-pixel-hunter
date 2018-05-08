@@ -3,7 +3,7 @@ import GreetingScreen from './greeting-screen';
 import RulesScreen from './rules-screen';
 import GameScreen from './game-screen';
 import Stats from './stats-screen';
-import stateHandler from '../Controller/StateHandler';
+import StateHandler from '../controller/state-handler';
 
 
 export default class Application {
@@ -19,18 +19,18 @@ export default class Application {
   }
 
   static showRules() {
-    const rules = new RulesScreen(stateHandler.nameInput);
+    const rules = new RulesScreen(StateHandler.nameInput);
     rules.init();
   }
 
   static showGame() {
-    const {state} = stateHandler;
+    const {state} = StateHandler;
     const game = new GameScreen(state);
     game.init();
   }
 
   static showStats() {
-    const {state} = stateHandler;
+    const {state} = StateHandler;
     const stats = new Stats(state);
     stats.init();
   }

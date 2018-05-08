@@ -1,11 +1,11 @@
 import LoadingView from '../views/loading-view';
 import ErrorView from '../views/error-view';
-import updateView from './updateView';
-import stateHandler from './StateHandler';
-import nextScreen from './nextScreen';
-import adaptData from './adaptData';
+import updateView from './update-view';
+import StateHandler from './state-handler';
+import changeScreen from './change-screen';
+import adaptData from './adapt-data';
 import HeaderView from '../views/header-view';
-import backToIntro from './backToIntro';
+import returnToIntro from './return-to-intro';
 
 const APP_ID = `3256445`;
 const BASE_URL = `https://es.dump.academy/pixel-hunter`;
@@ -25,14 +25,14 @@ export default class Loader {
         .then(checkStatus)
         .then((res) => res.json())
         .then((body) => {
-          adaptData(stateHandler.state, body, (err, data) => {
+          adaptData(StateHandler.state, body, (err, data) => {
             if (err) {
               this.showError(err);
             }
-            const newState = Object.assign({}, stateHandler.state);
+            const newState = Object.assign({}, StateHandler.state);
             newState.stages = Object.assign(data, newState.staticStages);
-            stateHandler.state = newState;
-            nextScreen();
+            StateHandler.state = newState;
+            changeScreen();
           });
         }).catch((err) => this.showError(err));
   }
@@ -43,7 +43,7 @@ export default class Loader {
 
   static showError(err) {
     const header = new HeaderView();
-    header.onButtonBackClick = backToIntro;
+    header.onButtonBackClick = returnToIntro;
     updateView(header, new ErrorView(err));
   }
 

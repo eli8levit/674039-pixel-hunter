@@ -1,4 +1,4 @@
-import initialState from '../data/initialState';
+import initialState from '../data/initial-state';
 
 class Timer {
   constructor() {

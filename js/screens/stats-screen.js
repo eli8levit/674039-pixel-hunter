@@ -1,9 +1,9 @@
 import StatsView from '../views/stats-view';
 import HeaderView from '../views/header-view';
-import updateView from '../Controller/updateView';
-import backToIntro from '../Controller/backToIntro';
-import Loader from '../Controller/loader';
-import timer from '../utils/timer';
+import updateView from '../controller/update-view';
+import returnToIntro from '../controller/return-to-intro';
+import Loader from '../controller/loader';
+import Timer from '../utils/timer';
 
 export default class Stats {
   constructor(state) {
@@ -11,7 +11,7 @@ export default class Stats {
   }
 
   init() {
-    timer.stop();
+    Timer.stop();
     Loader.showLoading();
 
     const data = {
@@ -28,7 +28,7 @@ export default class Stats {
         this.header = new HeaderView();
         this.view = new StatsView(answers);
 
-        this.header.onButtonBackClick = backToIntro;
+        this.header.onButtonBackClick = returnToIntro;
 
         updateView(this.header, this.view);
       });

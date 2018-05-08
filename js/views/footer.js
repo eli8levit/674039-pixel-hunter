@@ -1,6 +1,6 @@
 import {Answers} from '../data/config';
 
-const footer = (results) => `<div class="stats">
+const getFooter = (results) => `<div class="stats">
                               <ul class="stats">
                                 ${createFooter(results)}
                               </ul>
@@ -31,4 +31,4 @@ const createFooter = (results) => {
   return str;
 };
 
-export default footer;
+export default getFooter;
