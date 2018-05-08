@@ -21,6 +21,7 @@ export default class GameScreen {
     this.view = new Game(this.state);
 
     this.header.onButtonBackClick = () => {
+      // eslint-disable-next-line no-alert
       if (window.confirm(`Вы в этом уверены? Текущая игра будет утеряна навечно! Я бы подумал дважды...`)) {
         returnToIntro();
       }
