@@ -38,6 +38,7 @@ export default class GameScreen {
         this.header.onBlink();
       } else if (time === 0) {
         const nextState = Object.assign({}, stateHandler.state);
+        nextState.lives--;
         nextState.results.push({
           correct: false,
           time: initialState.time
