@@ -1,5 +1,5 @@
 import initialState from '../data/initial-state';
-import Application from '../screens/application';
+import application from '../screen/application';
 import {ScreenTypes} from '../data/config';
 
 class StateHandler {
@@ -33,17 +33,17 @@ class StateHandler {
     }
 
     switch (view) {
-      case ScreenTypes.INTRO: Application.showIntro(); break;
+      case ScreenTypes.INTRO: application.showIntro(); break;
 
-      case ScreenTypes.GREETING: Application.showGreeting(); break;
+      case ScreenTypes.GREETING: application.showGreeting(); break;
 
-      case ScreenTypes.RULES: Application.showRules(); break;
+      case ScreenTypes.RULES: application.showRules(); break;
 
-      case GAME: Application.showGame(); break;
+      case GAME: application.showGame(); break;
 
-      case ScreenTypes.STATS: Application.showStats(); break;
+      case ScreenTypes.STATS: application.showStats(); break;
 
-      default: Application.showIntro();
+      default: application.showIntro();
     }
   }
 }

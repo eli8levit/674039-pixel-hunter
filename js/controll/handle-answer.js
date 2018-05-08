@@ -1,7 +1,7 @@
 import StateHandler from './state-handler';
 import changeScreen from './change-screen';
 import {QuestionTypes} from '../data/config';
-import Timer from '../utils/timer';
+import Timer from '../util/timer';
 
 const CLEAR_ANSWERS = `clear`;
 

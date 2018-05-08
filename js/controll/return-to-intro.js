@@ -1,5 +1,5 @@
 import StateHandler from './state-handler';
-import Timer from '../utils/timer';
+import Timer from '../util/timer';
 import initialState from '../data/initial-state';
 
 const returnToIntro = () => {

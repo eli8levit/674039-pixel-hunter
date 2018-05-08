@@ -1,12 +1,12 @@
 import Game from '../views/game-view';
 import HeaderView from '../views/header-view';
-import updateView from '../controller/update-view';
-import handleAnswer from '../controller/handle-answer';
-import returnToIntro from '../controller/return-to-intro';
-import Timer from '../utils/timer';
-import StateHandler from '../controller/state-handler';
+import updateView from '../controll/update-view';
+import handleAnswer from '../controll/handle-answer';
+import returnToIntro from '../controll/return-to-intro';
+import Timer from '../util/timer';
+import StateHandler from '../controll/state-handler';
 import initialState from '../data/initial-state';
-import changeScreen from '../controller/change-screen';
+import changeScreen from '../controll/change-screen';
 
 const LAST_TIME = 5;
 

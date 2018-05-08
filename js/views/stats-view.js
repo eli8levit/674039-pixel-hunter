@@ -1,7 +1,7 @@
 
 import AbstractView from './abstract-view';
-import pointCount from '../utils/point-сount';
-import bonusCount from '../utils/bonus-сount';
+import pointCount from '../util/point-сount';
+import bonusCount from '../util/bonus-сount';
 import getFooter from './footer';
 
 export default class StatsView extends AbstractView {

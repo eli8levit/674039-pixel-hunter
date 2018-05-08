@@ -1,9 +1,9 @@
 import StatsView from '../views/stats-view';
 import HeaderView from '../views/header-view';
-import updateView from '../controller/update-view';
-import returnToIntro from '../controller/return-to-intro';
-import Loader from '../controller/loader';
-import Timer from '../utils/timer';
+import updateView from '../controll/update-view';
+import returnToIntro from '../controll/return-to-intro';
+import Loader from '../controll/loader';
+import Timer from '../util/timer';
 
 export default class Stats {
   constructor(state) {

@@ -3,7 +3,7 @@ import GreetingScreen from './greeting-screen';
 import RulesScreen from './rules-screen';
 import GameScreen from './game-screen';
 import Stats from './stats-screen';
-import StateHandler from '../controller/state-handler';
+import StateHandler from '../controll/state-handler';
 
 
 export default class Application {

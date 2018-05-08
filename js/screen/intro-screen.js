@@ -1,6 +1,6 @@
 import IntroView from '../views/intro-view';
-import updateView from '../controller/update-view';
-import changeScreen from '../controller/change-screen';
+import updateView from '../controll/update-view';
+import changeScreen from '../controll/change-screen';
 
 class IntroScreen {
   init() {

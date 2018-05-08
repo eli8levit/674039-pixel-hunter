@@ -1,9 +1,9 @@
 import RulesView from '../views/rules-view';
 import HeaderView from '../views/header-view';
-import StateHandler from '../controller/state-handler';
-import returnToIntro from '../controller/return-to-intro';
-import changeScreen from '../controller/change-screen';
-import updateView from '../controller/update-view';
+import StateHandler from '../controll/state-handler';
+import returnToIntro from '../controll/return-to-intro';
+import changeScreen from '../controll/change-screen';
+import updateView from '../controll/update-view';
 
 export default class RulesScreen {
   constructor(name) {
