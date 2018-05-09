@@ -1,4 +1,5 @@
 import {Answers} from './config';
+import initialState from './initial-state';
 
 function generateResults() {
   const results = {
@@ -13,7 +14,7 @@ function generateResults() {
   for (let i = 0; i < Answers.ANSWERS_AMOUNT; i++) {
     const fast = Math.floor(Math.random() * Answers.ANSWERS_AMOUNT);
     const average = Math.floor(Math.random() * Answers.ANSWERS_AMOUNT) + Answers.ANSWERS_AMOUNT;
-    const slow = Math.floor(Math.random() * 11) + 30;
+    const slow = Math.floor(Math.random() * Answers.ANSWERS_AMOUNT) + initialState.time;
 
     results.correctAverageAnswers.push({
       correct: true,

@@ -24,11 +24,11 @@ export default class AbstractView {
     return this._el;
   }
 
-  bind() {
-    // bind listeners
-  }
-
   render() {
     return createElement(this.template);
+  }
+
+  bind() {
+    // bind listeners
   }
 }

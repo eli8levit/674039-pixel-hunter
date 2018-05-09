@@ -1,10 +1,10 @@
-import {QuestionTypes, AnswerTypes, Buttons} from '../data/config';
+import {QuestionTypes, AnswerTypes, Buttons, Answers} from '../data/config';
 
 export default function adaptData(state, data, callback) {
   let adaptedData = {};
 
   try {
-    data.forEach((stage, key) => {
+    data.slice(0, Answers.ANSWERS_AMOUNT).forEach((stage, key) => {
 
       const adaptedStage = {
         screen: stage.type,

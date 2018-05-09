@@ -14,25 +14,6 @@ export default class Game extends AbstractView {
     this.game = state.stages[this.state.currentScreen].screen;
   }
 
-  nextClick() {
-
-  }
-
-  onAnswer() {
-
-  }
-
-  bind() {
-    const className = this.game === QuestionTypes.ONE_OF_THREE ? `game__option` : `game__answer`;
-    const limit = this.game === QuestionTypes.TWO_OF_TWO ? TWO_OPTIONS : SINGLE_OPTION;
-    const answerCollection = this.element.getElementsByClassName(className);
-    const answerArr = Array.prototype.slice.call(answerCollection);
-
-    answerArr.forEach((answer) => {
-      answer.addEventListener(`click`, (e) => this.onAnswer(e, answerArr, limit, this.state), false);
-    });
-  }
-
   get template() {
     const stage = this.state.stages[this.state.currentScreen];
     let res = ``;
@@ -104,5 +85,24 @@ export default class Game extends AbstractView {
       default: res = `<h1>Template not found</h1>`;
     }
     return res;
+  }
+
+  nextClick() {
+
+  }
+
+  onAnswer() {
+
+  }
+
+  bind() {
+    const className = this.game === QuestionTypes.ONE_OF_THREE ? `game__option` : `game__answer`;
+    const limit = this.game === QuestionTypes.TWO_OF_TWO ? TWO_OPTIONS : SINGLE_OPTION;
+    const answerCollection = this.element.getElementsByClassName(className);
+    const answerArr = Array.prototype.slice.call(answerCollection);
+
+    answerArr.forEach((answer) => {
+      answer.addEventListener(`click`, (e) => this.onAnswer(e, answerArr, limit, this.state), false);
+    });
   }
 }

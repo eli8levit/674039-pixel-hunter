@@ -6,15 +6,6 @@ export default class GreetingView extends AbstractView {
     super();
   }
 
-  nextClick() {
-
-  }
-
-  bind() {
-    const nextElement = this.element.querySelector(`.greeting__continue`);
-    nextElement.addEventListener(`click`, this.nextClick, false);
-  }
-
   get template() {
     return `<div class="greeting central--blur">
               <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
@@ -31,5 +22,14 @@ export default class GreetingView extends AbstractView {
                 <span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span>
               </div>
             </div>`;
+  }
+
+  nextClick() {
+
+  }
+
+  bind() {
+    const nextElement = this.element.querySelector(`.greeting__continue`);
+    nextElement.addEventListener(`click`, this.nextClick, false);
   }
 }

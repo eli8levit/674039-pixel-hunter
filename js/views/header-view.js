@@ -8,26 +8,6 @@ export default class HeaderView extends AbstractView {
     this.state = state;
   }
 
-  onBlink() {
-    const timer = document.querySelector(`.game__timer`);
-    timer.className += ` blink`;
-  }
-
-  changeTime(time) {
-    this.timer.textContent = time;
-  }
-
-  onButtonBackClick() {
-
-  }
-
-  bind() {
-    const backButton = this.element.querySelector(`.back`);
-    backButton.addEventListener(`click`, this.onButtonBackClick, false);
-
-    this.timer = this.element.querySelector(`.game__timer`);
-  }
-
   get template() {
     return `<div>
               <header class="header">
@@ -44,5 +24,24 @@ export default class HeaderView extends AbstractView {
                 </div>` : ``}
               </header>
             </div>`;
+  }
+
+  onBlink() {
+    const timer = document.querySelector(`.game__timer`);
+    timer.className += ` blink`;
+  }
+
+  changeTime(time) {
+    this.timer.textContent = time;
+  }
+
+  onButtonBackClick() {
+
+  }
+
+  bind() {
+    const backButton = this.element.querySelector(`.back`);
+    backButton.addEventListener(`click`, this.onButtonBackClick, false);
+    this.timer = this.element.querySelector(`.game__timer`);
   }
 }
