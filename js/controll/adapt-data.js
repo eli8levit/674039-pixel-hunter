@@ -2,10 +2,15 @@ import {QuestionTypes, AnswerTypes, Buttons, Answers} from '../data/config';
 
 export default function adaptData(state, data, callback) {
   let adaptedData = {};
+  let count = 0;
+
+  const games = data.slice(0, Answers.ANSWERS_AMOUNT);
+
+  const photoAmounts = games.map((game) => game.answers.length);
+  const totalPhotoAmount = photoAmounts.reduce((a, b) => a + b);
 
   try {
-    data.slice(0, Answers.ANSWERS_AMOUNT).forEach((stage, key) => {
-
+    games.forEach((stage, key) => {
       const adaptedStage = {
         screen: stage.type,
         next: `game${key + 1}`,
@@ -17,9 +22,18 @@ export default function adaptData(state, data, callback) {
       };
 
       stage.answers.forEach((answer) => {
-        adaptedStage.content.photos.push(answer.image.url);
-      });
 
+        const image = new Image();
+        image.src = answer.image.url;
+
+        image.onload = () => {
+          adaptedStage.content.photos.push(image.src);
+          count++;
+          if (count === totalPhotoAmount) {
+            callback(null, adaptedData);
+          }
+        };
+      });
       adaptedData[`game${key}`] = adaptedStage;
     });
 
@@ -28,8 +42,6 @@ export default function adaptData(state, data, callback) {
   } catch (e) {
     callback(e);
   }
-
-  callback(null, adaptedData);
 }
 
 const decideWhichAnswer = (answers, type) => {

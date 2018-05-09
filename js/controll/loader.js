@@ -30,7 +30,7 @@ export default class Loader {
               this.showError(err);
             }
             const newState = Object.assign({}, StateHandler.state);
-            newState.stages = Object.assign(data, newState.staticStages);
+            newState.stages = Object.assign({}, data, newState.staticStages);
             StateHandler.state = newState;
             changeScreen();
           });
